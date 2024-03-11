@@ -5,6 +5,12 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        score.sort(key=lambda x: x[k], reverse=True)
+        for i in range(len(score)):
+            max_idx = i
+            for j in range(i+1, len(score)):
+                if score[j][k] > score[max_idx][k]:
+                    max_idx = j
+            score[i], score[max_idx] = score[max_idx], score[i]
+
         
         return score
